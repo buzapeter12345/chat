@@ -1,5 +1,5 @@
 const express = require("express");
-const { createServer } = require("node:http");
+const { createServer } = require("http"); // Corrected import
 const { Server } = require("socket.io");
 const http = require('http');
 
