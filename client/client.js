@@ -33,6 +33,7 @@ form.addEventListener("submit", (e) => {
     input.value = "";
     if (username.value) {
       username.style.display = "none";
+      document.getElementById("form").style.gridTemplateColumns = "80% 20%";
     }
   }
 });
