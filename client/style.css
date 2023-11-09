@@ -43,7 +43,7 @@ body {
   border: none;
   padding: 0 1rem;
   margin: 0.25rem;
-  border-radius: 3px;
+  border-radius: 2rem;
   outline: none;
   color: #fff;
   cursor: pointer;
@@ -66,6 +66,16 @@ body {
   background: #ecf7f8;
   font-family: "Courier New", Courier, monospace;
   font-size: 10px;
+  display: flex;
+  text-align: center;
+  align-content: center;
+  flex-direction: row;
+  user-select: none;
+}
+
+h3 {
+  margin-block-start: 1.65em;
+  margin-block-end: 1.65em;
 }
 
 #messages > li:nth-child(odd) {

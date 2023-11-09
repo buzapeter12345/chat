@@ -13,7 +13,8 @@ io.on("connection", (s) => {
       var felhasznalo = "Vendég";
     }
     var uzenet = felhasznalo + ": " + msg;
-    io.emit("msg", uzenet);
+    var uzenetHTML = `<h1>${felhasznalo}: </h1> <h3>${msg}</h3>`;
+    io.emit("msg", uzenetHTML);
   });
   s.on("cur", (msg) => {
     io.emit("cur", msg);

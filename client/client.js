@@ -31,7 +31,7 @@ socket.on("msg", (msg) => {
     link.textContent = "LINK";
     item.appendChild(link);
   } else {
-    item.textContent = msg;
+    item.innerHTML = msg;
   }
   messages.appendChild(item);
 
