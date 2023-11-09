@@ -7,20 +7,28 @@ app.use(express.static("client"));
 const server = createServer(app);
 const io = new Server(server);
 
-io.on("connection", (s) => {
-  s.on("msg", (msg, felhasznalo) => {
+const chatMessages = [];
+
+io.on("connection", (socket) => {
+  socket.emit("chatHistory", chatMessages);
+
+  socket.on("msg", (msg, felhasznalo) => {
     if (felhasznalo == "") {
-      var felhasznalo = "Vendég";
+      felhasznalo = "Vendég";
     }
-    var uzenet = felhasznalo + ": " + msg;
-    var uzenetHTML = `<h1>${felhasznalo}: </h1> <h3>${msg}</h3>`;
+    const uzenet = `${felhasznalo}: ${msg}`;
+    const uzenetHTML = `<h1>${felhasznalo}: </h1> <h3>${msg}</h3>`;
+    
+    chatMessages.push(uzenetHTML);
+
     io.emit("msg", uzenetHTML);
   });
-  s.on("cur", (msg) => {
+
+  socket.on("cur", (msg) => {
     io.emit("cur", msg);
   });
 });
 
 server.listen(3000, () => {
-  console.log("server  running at http://localhost:3000");
+  console.log("Server is running at http://localhost:3000");
 });
